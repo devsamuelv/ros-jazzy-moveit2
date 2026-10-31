@@ -6,7 +6,14 @@
     "dockerfile": "../Dockerfile"
   },
   // 1. Mount the Wayland Socket and GPU rendering devices consistency=cached
-  "mounts": [],
+  "workspaceMount": "source=${localWorkspaceFolder},target=/root/ros2_ws,type=bind",
+  "workspaceFolder": "/root/ros2_ws",
+  // 1. Mount the Wayland Socket and GPU rendering devices consistency=cached
+  "mounts": [
+    "source=/mnt/wslg/.X11-unix,target=/tmp/.X11-unix,type=bind",
+    "source=/mnt/wslg,target=/mnt/wslg,type=bind",
+    "source=/usr/lib/wsl,target=/usr/lib/wsl,type=bind"
+  ],
   "hostRequirements": {
     "gpu": true
   },
